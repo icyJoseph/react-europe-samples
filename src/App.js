@@ -5,6 +5,7 @@ import Pokemon from "./components/Pokemon";
 import SearchInput from "./components/SeachInput";
 
 import PokeData from "./containers/PokeData";
+import Inc from "./containers/Inc";
 
 function App() {
   const [query, changeQuery] = useState("");
@@ -17,6 +18,7 @@ function App() {
     <>
       <Normalize />
       <Grid py={20}>
+        <Inc />
         <Typography variant="display-1">Pokemon Types</Typography>
         <SearchInput
           value={query}
