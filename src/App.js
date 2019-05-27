@@ -18,8 +18,6 @@ export function sleep(duration) {
   });
 }
 
-const Tab = ({ hidden, children }) => <div hidden={hidden}>{children}</div>;
-
 const ExpensiveTree = React.lazy(async () => {
   await sleep(1000);
   return import("./containers/Expensive");
@@ -65,15 +63,9 @@ function App() {
           <Button onClick={() => setActive(2)}>Third</Button>
         </>
         <React.Suspense fallback={<div>Loading</div>}>
-          <Tab hidden={active !== 0}>
-            <ExpensiveTree number={0} />
-          </Tab>
-          <Tab hidden={active !== 1}>
-            <PokemonTree />
-          </Tab>
-          <Tab hidden={active !== 2}>
-            <ExpensiveTree number={2} />
-          </Tab>
+          {active === 0 && <ExpensiveTree number={0} />}
+          {active === 1 && <PokemonTree />}
+          {active === 2 && <ExpensiveTree number={2} />}
         </React.Suspense>
       </Grid>
     </>
